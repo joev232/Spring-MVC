@@ -1,5 +1,6 @@
 package pictures.spring.modelo.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pictures.spring.modelo.dao.interfaces.GenericIDAO;
@@ -23,5 +24,14 @@ public class ServicesCountries {
 		return countries;
 	}
 	
+	public List<String> getCountriesNames(){
+		List<Countries> countries = this.getCountriesList();
+		List<String> countries_name = new ArrayList<>(countries.size());
+		for (Countries country : countries) {
+			countries_name.add(country.getCountry_name());
+		}
+		return countries_name;
+		
+	}
 	
 }
