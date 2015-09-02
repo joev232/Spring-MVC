@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-    <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -15,6 +14,8 @@
 
 <a href="registrarPersona?lng=es"><img alt="Bandera española" width="50" height="50" src="images/es.png"></a>
 <a href="registrarPersona?lng=it"><img alt="Bandera italiana" width="50" height="50" src="images/it.png"></a>
+<a href="registrarPersona?lng=en"><img alt="Bandera Inglesa" width="50" height="50" src="images/uk.png"></a>
+
 
 	<table border="1px"> 
 		<form:form method="POST" modelAttribute="persona" enctype="multipart/form-data">
@@ -33,7 +34,7 @@
 
 			<tr>
 				<th align="left"><label for="DNI"><spring:message code="formdni"></spring:message></label>
-				<td><form:input type="text" path="dni" id="dni" placeholder="DNI" /></td>
+				<td><form:input onchange="pedirLetraDNI()" type="text" path="dni" id="dni" placeholder="DNI" /></td>
 				<td><form:errors path="dni" class="errorsp" /></td>
 			</tr>
 

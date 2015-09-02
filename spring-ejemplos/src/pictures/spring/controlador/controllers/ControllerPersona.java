@@ -40,25 +40,25 @@ public class ControllerPersona {
 	@RequestMapping(method = RequestMethod.POST)
 	public String saveRegistration(@Valid Persona persona, BindingResult result, ModelMap model,
 			@RequestParam("foto") MultipartFile file) {
-		String msj = "exito";
+		String web = "error";
 
 		if (result.hasErrors()) {
-			msj = "formulario";
+			web = "formulario";
 		} else {
 			boolean guardado = this.guardarArchivo(file);
 			if (guardado) {
 				persona.setPhotoOriginalName(file.getOriginalFilename());
 				model.addAttribute("persona", persona);
-				msj = "mostrarpersona";
+				web = "mostrarpersona";
 			}
 		}
 
-		return msj;
+		return web;
 	}
 
 	private boolean guardarArchivo(MultipartFile file) {
 		boolean guardado = true;
-		String savePath = Paths.absoluteSavePath + file.getOriginalFilename();
+		String savePath = Paths.absoluteSavePathClase + file.getOriginalFilename();
 		try {
 			byte[] bytes = file.getBytes(); // OBTENEMOS LOS BYTES DEL MULTIPART
 			BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(savePath)));
